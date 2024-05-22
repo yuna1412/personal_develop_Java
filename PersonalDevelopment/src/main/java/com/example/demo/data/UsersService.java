@@ -31,10 +31,11 @@ public class UsersService {
 		return repository.findById(id).orElse(null);
 	}
 	
-	public List<? extends UsersInterface> findByNameLike(String find) {
-		System.out.println("Service:getByNameLike find[" + find + "]");
-		return repository.findByUsernameLike("%" + find + "%");
-	}
+	public UsersInterface findByUsernameAndPassword(String username, String password) {
+        System.out.println("Service: findByUsernameAndPassword [username=" + username + ", password=" + password + "]");
+        return repository.findByUsernameAndPassword(username, password);
+    }
+	
 	
 	/**
 	 * 
@@ -57,6 +58,8 @@ public class UsersService {
 		}
 	}
 
+}
+
 //	public void deleteByUsername(String username) {
 //	    System.out.println("Service:deleteByUsername:[" + username + "]");
 //	    repository.deleteByUsername(username);
@@ -68,4 +71,3 @@ public class UsersService {
 //	    return repository.findApartmentsByIdRange(startId, endId);
 //	}
 
-}
