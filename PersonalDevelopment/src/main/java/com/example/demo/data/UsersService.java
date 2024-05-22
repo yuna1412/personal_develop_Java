@@ -31,7 +31,7 @@ public class UsersService {
 		return repository.findById(id).orElse(null);
 	}
 	
-	public UsersInterface findByUsernameAndPassword(String username, String password) {
+	public List<Users> findByUsernameAndPassword(String username, String password) {
         System.out.println("Service: findByUsernameAndPassword [username=" + username + ", password=" + password + "]");
         return repository.findByUsernameAndPassword(username, password);
     }
