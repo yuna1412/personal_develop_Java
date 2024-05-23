@@ -26,10 +26,6 @@ public class UsersService {
 		return repository.findAll();
 	}
 	
-	public UsersInterface getById(int id) {
-		System.out.println("Service:getById id[" + id + "]");
-		return repository.findById(id).orElse(null);
-	}
 	
 	public List<Users> findByUsernameAndPassword(String username, String password) {
         System.out.println("Service: findByUsernameAndPassword [username=" + username + ", password=" + password + "]");
@@ -60,14 +56,4 @@ public class UsersService {
 
 }
 
-//	public void deleteByUsername(String username) {
-//	    System.out.println("Service:deleteByUsername:[" + username + "]");
-//	    repository.deleteByUsername(username);
-//	}
-
-
-//	public List<? extends UsersInterface> findApartmentsInRange(int startId, int endId) {
-//	    System.out.println("Service:findApartmentsInRange startId[" + startId + "] endId[" + endId + "]");
-//	    return repository.findApartmentsByIdRange(startId, endId);
-//	}
 

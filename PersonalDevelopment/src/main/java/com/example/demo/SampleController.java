@@ -29,21 +29,7 @@ public class SampleController {
 		System.out.println("users/index");
 		return service.getAll();
 	}
-
-	@GetMapping("/users/{id}")
-	@CrossOrigin
-	public UsersInterface fruitById(@PathVariable int id) {
-		System.out.println("users/findById");
-		return service.getById(id);
-	}
 	
-//	@GetMapping("/users/{startId}/{endId}")
-//	@CrossOrigin
-//	public List<? extends UsersInterface> apartmentsInRange(@PathVariable int startId, @PathVariable int endId) {
-//	    System.out.println("users/findInRange");
-//	    return service.findApartmentsInRange(startId, endId);
-//	}
-
 
 	@PostMapping("/users/add")
 	@CrossOrigin
@@ -51,33 +37,24 @@ public class SampleController {
 		System.out.println("users/add(post)");
 		return service.add(users);
 	}
-
-	@PostMapping("/users/update")
-	@CrossOrigin
-	public int update(@RequestBody Users users) {
-		System.out.println("users/update(post)");
-		return service.add(users);
-	}
-
-//	@PostMapping("/users/delete")
-//	@CrossOrigin
-//	public void delete(@RequestBody Users users) {
-//		System.out.println("users/delete(post)");
-//		service.delete(users);
-//	}
 	
 	@DeleteMapping("/users/{username}")
     @CrossOrigin
 	public void delete(@PathVariable String username) {
         System.out.println("users/delete(delete)");
-        service.deleteByUsername(username); // ユーザー名に基づいてユーザーを削除する処理を呼び出す
+        service.deleteByUsername(username); 
     }
 	 
 	@PostMapping("/users/login")
-	public List<Users> findByUsernameAndPassword(String username, String password) {
+	@CrossOrigin
+	public List<Users> findByUsernameAndPassword(@RequestBody UserCredentials credentials) {
+	    String username = credentials.getUsername();
+	    String password = credentials.getPassword();
 	    System.out.println("Service: findByUsernameAndPassword [username=" + username + ", password=" + password + "]");
 	    return service.findByUsernameAndPassword(username, password);
 	}
+
+
 	
 	
 }
